@@ -4,3 +4,11 @@
 bin/App.class
 bin/App.class
 bin/App.class
+*.jar
+.vscode/settings.json
+*.xml
+src/.DS_Store
+lib/.DS_Store
+bin/.DS_Store
+.vscode/settings.json
+.DS_Store
