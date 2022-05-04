@@ -10,9 +10,9 @@ public class Package
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int packageID;
+    private int packageID;
 
     @Column(length = 100, nullable = false)
-    String packageName;
+    private String packageName;
     
 }

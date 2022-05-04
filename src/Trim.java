@@ -14,15 +14,15 @@ public class Trim
     @Id
     @Column(length = 100, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int trimID;
+    private int trimID;
 
     @Column(nullable = false)
-    int modelID;
+    private Model model;
 
     @Column(nullable = false)
-    String trimName;
+    private String trimName;
 
 
-    int cost;
+    private int cost;
     
 }

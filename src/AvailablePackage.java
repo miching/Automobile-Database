@@ -11,15 +11,15 @@ public class AvailablePackage
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int availableID;
+    private int availableID;
 
     @Column(nullable = false)
-    int trimID;
+    private Trim trim;
 
     @Column(nullable = false)
-    int packageID;
+    private Package package;
     
-    int cost;
+    private int cost;
     
     
 }

@@ -14,11 +14,11 @@ public class Model
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int modelID;
+    private int modelID;
 
     @Column(length = 100, nullable = false)
-    String modelName;
+    private String modelName;
 
-    int year;
+    private int year;
     
 }

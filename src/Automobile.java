@@ -11,12 +11,12 @@ public class Automobile
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int autoID;
+    private int autoID;
 
     @Column(nullable = false)
-    int trimID;
+    private Trim trim;
 
     @Column(nullable = false, unique = true, length = 25)
-    String vin;
+    private String vin;
     
 }
