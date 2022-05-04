@@ -9,7 +9,7 @@ public class Package
     @Column(nullable = false)
     int packageID;
 
-    @Column(length = 100)
+    @Column(length = 100, nullable = false)
     String packageName;
     
 }

@@ -1,5 +1,3 @@
-import org.eclipse.persistence.internal.expressions.FromAliasExpression;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -12,10 +10,10 @@ public class Automobile
     @Column(nullable = false)
     int autoID;
 
-    
+    @Column(nullable = false)
     int trimID;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, unique = true, length = 25)
     String vin;
     
 }

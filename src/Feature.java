@@ -10,7 +10,7 @@ public class Feature
     @Column(nullable = false)
     int featureID;
 
-    @Column(length = 100, unique = true)
+    @Column(length = 100, nullable = false, unique = true)
     String name;
     
 }

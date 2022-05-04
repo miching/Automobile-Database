@@ -1,9 +1,11 @@
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
 @Entity (name = "trim")
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = {"modeID", "trimName"} ) } )
 public class Trim
 {
 
@@ -11,11 +13,10 @@ public class Trim
     @Column(length = 100, nullable = false)
     int trimID;
 
-    //@UniqueConstraint(modelID, trimName)
-    @Column(unique = true)
+    @Column(nullable = false)
     int modelID;
 
-    @Column(unique = true)
+    @Column(nullable = false)
     String trimName;
 
 
