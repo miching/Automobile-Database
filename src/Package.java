@@ -13,7 +13,8 @@ public class Package
     @Column(length = 100, nullable = false)
     private String packageName;
 
-    @OneToMany(mappedBy = "package1")
+    @OneToMany
+    @JoinColumn(name = "package1")
     private Set<PackageFeature> packageFeatures;
 
 
