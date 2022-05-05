@@ -1,8 +1,6 @@
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import java.util.Set;
+
+import jakarta.persistence.*;
 
 @Entity (name = "feature")
 public class Feature 
@@ -15,5 +13,8 @@ public class Feature
 
     @Column(length = 100, nullable = false, unique = true)
     private String name;
+
+    @OneToMany(mappedBy = "feature")
+    private Set<PackageFeature> packageFeature;
     
 }

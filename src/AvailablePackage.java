@@ -1,8 +1,4 @@
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity(name = "availablePackage")
 public class AvailablePackage
@@ -17,7 +13,7 @@ public class AvailablePackage
     private Trim trim;
 
     @Column(nullable = false)
-    private Package package;
+    private Package package1;
     
     private int cost;
     
