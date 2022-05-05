@@ -1,3 +1,5 @@
+import java.util.Set;
+
 import jakarta.persistence.*;
 
 @Entity (name = "trim")
@@ -16,7 +18,10 @@ public class Trim
     @Column(nullable = false)
     private String trimName;
 
-
     private int cost;
+
+    @OneToMany (mappedBy = "trim")
+    //@JoinColumn(name = "trim")
+    private Set<TrimFeature> trimFeatures;
     
 }

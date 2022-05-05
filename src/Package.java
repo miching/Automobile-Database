@@ -14,6 +14,7 @@ public class Package
     private String packageName;
 
     @OneToMany (mappedBy = "package1")
+    //@JoinColumn(name = "package1")
     private Set<PackageFeature> packageFeatures;
 
 

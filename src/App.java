@@ -15,7 +15,7 @@ public class App {
         System.out.println("Example 1: find an entity based on its primary key.");
         Automobile car1 = em.find(Automobile.class, 1); // parameter 2: the primary key value.
         if (car1 != null) {
-            System.out.println("Museum with ID 1: " + car1);
+            System.out.println("Car with ID 1: " + car1);
         }
         else {
             System.out.println("There is no car with ID 1");
@@ -25,22 +25,23 @@ public class App {
         // The next "if" block will protect me if I run this code multiple times.
         // Otherwise we'll keep trying to create an object with a non-unique primary key,
         // and crash the program.
-        if (firstMuseum == null) {
+        if (car1 == null) {
             System.out.println();
             System.out.println("Example 2: creating a new entity.");
             
             // We must begin and later end a transaction when modifying the database.
             em.getTransaction().begin();
             
-            Museum newMuseum = new Museum(4, "Metropolitan Museum of Art of New York City", 
-                "New York, NY");
+            Automobile newCar = new Automobile();
             // The previous line just creates an object. It's not in the database yet.
             // The next line tells JPA to "stage" the object
-            em.persist(newMuseum);
+            em.persist(newCar);
 
             // Committing the transaction will push/"flush" the changes to the database.
             em.getTransaction().commit();
-            System.out.println("Museum " + newMuseum + " added to database. Go check DataGrip if you don't believe me!");
+            System.out.println("Automobile " + newCar + " added to database. Go check DataGrip if you don't believe me!");
+        }
+/*
 
             // Example 3: updating an entity.
             Museum fromDatabase = em.find(Museum.class, 4);
@@ -101,6 +102,7 @@ public class App {
             System.out.println(m);
         }
     
+  */      
 
         
     }

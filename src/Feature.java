@@ -14,7 +14,12 @@ public class Feature
     @Column(length = 100, nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "feature")
+    @OneToMany //(mappedBy = "feature")
+    @JoinColumn(name = "feature")
     private Set<PackageFeature> packageFeature;
+
+    @OneToMany //(mappedBy = "feature")
+    @JoinColumn(name = "feature")
+    private Set<TrimFeature> trimFeature;
     
 }

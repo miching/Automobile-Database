@@ -14,5 +14,14 @@ public class Automobile
 
     @Column(nullable = false, unique = true, length = 25)
     private String vin;
+
+    public Automobile() 
+    {
+
+
+        
+    }
+
+    
     
 }

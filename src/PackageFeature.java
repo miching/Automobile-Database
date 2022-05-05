@@ -1,6 +1,7 @@
 import jakarta.persistence.*;
 
 @Entity (name = "packageFeature")
+//@IdClass(PackageFeature.class)
 public class PackageFeature 
 {
     //How to do unidirectional for a many to many
