@@ -6,6 +6,8 @@ public class PackageFeature
 {
     //How to do unidirectional for a many to many
 
+    //How to create tables in datagrip
+
     @Id
     @JoinColumn(name = "packageID")
     @ManyToOne

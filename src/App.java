@@ -5,7 +5,7 @@ public class App {
     {
 
         System.out.println("Hello, World!");
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("project3");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("project3DB");
         EntityManager em = factory.createEntityManager();
 
         
