@@ -16,10 +16,10 @@ public class Feature
 
     @OneToMany //(mappedBy = "feature")
     @JoinColumn(name = "feature")
-    private Set<PackageFeature> packageFeature;
+    private Set<Package> packageFeature;
 
     @OneToMany //(mappedBy = "feature")
     @JoinColumn(name = "feature")
-    private Set<TrimFeature> trimFeature;
+    private Set<Trim> trimFeature;
     
 }

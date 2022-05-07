@@ -9,10 +9,12 @@ public class AvailablePackage
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int availableID;
 
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "trimID")
     private Trim trim;
 
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "packageID")
     private Package package1;
     
     private int cost;

@@ -9,8 +9,8 @@ public class Automobile
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int autoID;
 
-    @Column(nullable = false)
-    private Trim trim;
+    //@Column(nullable = false)
+    //private Trim trim;
 
     @Column(nullable = false, unique = true, length = 25)
     private String vin;

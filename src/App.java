@@ -12,6 +12,8 @@ public class App {
         // The EntityManager object lets us find, create, update, and delete individual
         // instances of our entity classes.
         
+        /*
+
         System.out.println("Example 1: find an entity based on its primary key.");
         Automobile car1 = em.find(Automobile.class, 1); // parameter 2: the primary key value.
         if (car1 != null) {
