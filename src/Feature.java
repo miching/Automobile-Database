@@ -10,7 +10,7 @@ public class Feature
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int featureID;
-
+/*
     @Column(length = 100, nullable = false, unique = true)
     private String name;
 
@@ -21,5 +21,5 @@ public class Feature
     @OneToMany //(mappedBy = "feature")
     @JoinColumn(name = "feature")
     private Set<Trim> trimFeature;
-    
+ */   
 }

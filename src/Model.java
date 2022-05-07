@@ -9,10 +9,10 @@ public class Model
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int modelID;
-
+/*
     @Column(length = 100, nullable = false)
     private String modelName;
 
     private int year;
-    
+  */  
 }

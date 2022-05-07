@@ -11,9 +11,9 @@ public class Trim
     @Column(length = 100, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int trimID;
-
-    //@Column(nullable = false)
-    //private Model model;
+/*
+    @Column(nullable = false)
+    private Model model;
 
     @Column(nullable = false)
     private String trimName;
@@ -26,5 +26,5 @@ public class Trim
     @OneToMany (mappedBy = "trim")
     //@JoinColumn(name = "trim")
     private Set<Feature> trimFeatures;
-    
+  */  
 }
