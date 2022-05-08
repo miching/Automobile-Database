@@ -44,5 +44,68 @@ public class Trim
 
     )
     private Set<Feature> trimFeatures;
+
+    public Trim(Model model, String trimName, int cost)
+    {
+
+      this.model = model;
+      this.trimName = trimName;
+      this.cost = cost;
+
+    }
+
+    public int getTrimID() {
+      return trimID;
+    }
+
+    public Model getModel() {
+      return model;
+    }
+
+    public void setModel(Model model) {
+      this.model = model;
+    }
+
+    public String getTrimName() {
+      return trimName;
+    }
+
+    public void setTrimName(String trimName) {
+      this.trimName = trimName;
+    }
+
+    public int getCost() {
+      return cost;
+    }
+
+    public void setCost(int cost) {
+      this.cost = cost;
+    }
+
+    public List<Automobile> getAutomobiles() {
+      return automobiles;
+    }
+
+    public void setAutomobiles(List<Automobile> automobiles) {
+      this.automobiles = automobiles;
+    }
+
+    public Set<AvailablePackage> getAvailablePackages() {
+      return availablePackages;
+    }
+
+    public void setAvailablePackages(Set<AvailablePackage> availablePackages) {
+      this.availablePackages = availablePackages;
+    }
+
+    public Set<Feature> getTrimFeatures() {
+      return trimFeatures;
+    }
+
+    public void setTrimFeatures(Set<Feature> trimFeatures) {
+      this.trimFeatures = trimFeatures;
+    }
+
+  
     
 }
