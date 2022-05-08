@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.*;
@@ -11,7 +12,7 @@ public class Trim
     @Column(length = 100, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int trimID;
-/*
+
     @Column(nullable = false)
     private Model model;
 
@@ -20,11 +21,24 @@ public class Trim
 
     private int cost;
 
+    //Unidirectional One-To-Many with automobiles
+    @OneToMany
+    @JoinColumn(name = "trim")
+    private List<Automobile> automobiles;
+
     @OneToMany (mappedBy = "trim")
     private Set<AvailablePackage> availablePackages;
 
-    @OneToMany (mappedBy = "trim")
-    //@JoinColumn(name = "trim")
+    //Unidirectional many to many with Features
+    @ManyToMany 
+    @JoinTable
+    (
+
+        name = "trimFeatures",
+        joinColumns = @JoinColumn(name = "trimID"),
+        inverseJoinColumns = @JoinColumn(name = "featureID")
+
+    )
     private Set<Feature> trimFeatures;
-  */  
+    
 }
