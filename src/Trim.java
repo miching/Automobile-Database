@@ -4,7 +4,7 @@ import java.util.Set;
 import jakarta.persistence.*;
 
 @Entity (name = "trim")
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = {"modeID", "trimName"} ) } )
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = {"modelID", "trimName"} ) } )
 public class Trim
 {
 
