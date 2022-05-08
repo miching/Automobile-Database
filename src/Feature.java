@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.Set;
 
 import jakarta.persistence.*;
@@ -31,6 +32,9 @@ public class Feature
     {
 
         this.name = name;
+        packageFeature = Collections.emptySet();
+        trimFeature = Collections.emptySet();
+        modelFeature = Collections.emptySet();
 
     }
 

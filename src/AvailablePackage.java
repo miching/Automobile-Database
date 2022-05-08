@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.Set;
 
 import jakarta.persistence.*;
@@ -32,10 +33,13 @@ public class AvailablePackage
 
     }
 
-    public AvailablePackage(Trim trim, Package package1, int cost) {
+    public AvailablePackage(Trim trim, Package package1, int cost)
+    {
+        
         this.trim = trim;
         this.package1 = package1;
         this.cost = cost;
+        chosenPackages = Collections.emptySet();
     }
 
     public int getAvailableID() {
@@ -76,7 +80,4 @@ public class AvailablePackage
 
     
 
-    
-    
-    
 }

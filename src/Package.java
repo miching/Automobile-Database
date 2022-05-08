@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.Set;
 
 import jakarta.persistence.*;
@@ -40,6 +41,8 @@ public class Package
     {
 
         this.packageName = packageName;
+        availablePackages = Collections.emptySet();
+        packageFeatures = Collections.emptySet();
 
     }
 

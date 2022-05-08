@@ -1,3 +1,5 @@
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Set;
 
 import jakarta.persistence.*;
@@ -45,6 +47,7 @@ public class Automobile
         this.autoID = autoID;
         this.trim = trim;
         this.vin = vin;
+        chosenPackages = Collections.emptySet();
         
     }
 
@@ -78,8 +81,4 @@ public class Automobile
 
     
 
-    
-
-    
-    
 }

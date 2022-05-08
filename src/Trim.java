@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -45,12 +46,22 @@ public class Trim
     )
     private Set<Feature> trimFeatures;
 
+    
+
+    public Trim() 
+    {
+
+
+      
+    }
+
     public Trim(Model model, String trimName, int cost)
     {
 
       this.model = model;
       this.trimName = trimName;
       this.cost = cost;
+      trimFeatures = Collections.emptySet();
 
     }
 
@@ -107,5 +118,5 @@ public class Trim
     }
 
   
-    
+
 }
