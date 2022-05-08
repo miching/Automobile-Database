@@ -1,3 +1,5 @@
+import java.util.Set;
+
 import jakarta.persistence.*;
 
 @Entity (name = "automobile")
@@ -17,6 +19,18 @@ public class Automobile
 
     @Column(nullable = false, unique = true, length = 25)
     private String vin;
+
+    //Bidirectional Many-to-Many with availablePackages
+    @ManyToMany
+    @JoinTable
+    (
+
+        name = "chosenPackages",
+        joinColumns = @JoinColumn(name = "autoID"),
+        inverseJoinColumns = @JoinColumn(name = "availableID")
+
+    )
+    private Set<AvailablePackage> chosenPackages;
 
     public Automobile() 
     {

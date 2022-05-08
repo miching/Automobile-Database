@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.*;
@@ -17,7 +18,7 @@ public class Model
 
     private int year;
 
-    //Unidirectional many to many with Features
+    //Unidirectional Many-to-Many with Features
     @ManyToMany 
     @JoinTable
     (
@@ -28,5 +29,9 @@ public class Model
 
     )
     private Set<Feature> modelFeatures;
+
+    //Bidirectional One-to-Many with Trim
+    @OneToMany(mappedBy = "model")
+    private List<Trim> trims;
     
 }

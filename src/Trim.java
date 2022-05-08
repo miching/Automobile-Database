@@ -13,7 +13,10 @@ public class Trim
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int trimID;
 
-    @Column(nullable = false)
+    //Bidirectional Many-to-One with models
+    @ManyToOne
+    @JoinColumn(name = "modelID")
+    //@Column(nullable = false)
     private Model model;
 
     @Column(nullable = false)
@@ -26,10 +29,11 @@ public class Trim
     @JoinColumn(name = "trim")
     private List<Automobile> automobiles;
 
+    //Bidirectional One-to-Many with availablePackges
     @OneToMany (mappedBy = "trim")
     private Set<AvailablePackage> availablePackages;
 
-    //Unidirectional many to many with Features
+    //Unidirectional Many-to-Many with Features
     @ManyToMany 
     @JoinTable
     (

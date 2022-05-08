@@ -13,6 +13,7 @@ public class Package
     @Column(length = 100, nullable = false)
     private String packageName;
 
+    //Bidirectional One-to-Many with availablePackges
     @OneToMany(mappedBy = "package1")
     private Set<AvailablePackage> availablePackages;
 
