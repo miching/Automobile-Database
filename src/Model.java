@@ -33,5 +33,58 @@ public class Model
     //Bidirectional One-to-Many with Trim
     @OneToMany(mappedBy = "model")
     private List<Trim> trims;
+
+    public Model() 
+    {
+
+
+
+    }
+
+    public Model(String modelName, int year)
+    {
+
+      this.modelName = modelName;
+      this.year = year;
+
+    }
+
+    public int getModelID() {
+      return modelID;
+    }
+
+    public String getModelName() {
+      return modelName;
+    }
+
+    public void setModelName(String modelName) {
+      this.modelName = modelName;
+    }
+
+    public int getYear() {
+      return year;
+    }
+
+    public void setYear(int year) {
+      this.year = year;
+    }
+
+    public Set<Feature> getModelFeatures() {
+      return modelFeatures;
+    }
+
+    public void setModelFeatures(Set<Feature> modelFeatures) {
+      this.modelFeatures = modelFeatures;
+    }
+
+    public List<Trim> getTrims() {
+      return trims;
+    }
+
+    public void setTrims(List<Trim> trims) {
+      this.trims = trims;
+    }
+
+    
     
 }
