@@ -29,6 +29,48 @@ public class Package
     )
     private Set<Feature> packageFeatures;
 
+    public Package() 
+    {
 
+
+
+    }
+
+    public Package(String packageName) 
+    {
+
+        this.packageName = packageName;
+
+    }
+
+    public int getPackageID() {
+        return packageID;
+    }
+
+    public String getPackageName() {
+        return packageName;
+    }
+
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
+    }
+
+    public Set<AvailablePackage> getAvailablePackages() {
+        return availablePackages;
+    }
+
+    public void setAvailablePackages(Set<AvailablePackage> availablePackages) {
+        this.availablePackages = availablePackages;
+    }
+
+    public Set<Feature> getPackageFeatures() {
+        return packageFeatures;
+    }
+
+    public void setPackageFeatures(Set<Feature> packageFeatures) {
+        this.packageFeatures = packageFeatures;
+    }
+
+    
     
 }
