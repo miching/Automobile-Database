@@ -36,8 +36,49 @@ public class Automobile
     {
 
 
+
+    }
+
+    public Automobile(int autoID, Trim trim, String vin)
+    {
+        
+        this.autoID = autoID;
+        this.trim = trim;
+        this.vin = vin;
         
     }
+
+    public int getAutoID() {
+        return autoID;
+    }
+
+    public Trim getTrim() {
+        return trim;
+    }
+
+    public void setTrim(Trim trim) {
+        this.trim = trim;
+    }
+
+    public String getVin() {
+        return vin;
+    }
+
+    public void setVin(String vin) {
+        this.vin = vin;
+    }
+
+    public Set<AvailablePackage> getChosenPackages() {
+        return chosenPackages;
+    }
+
+    public void setChosenPackages(Set<AvailablePackage> chosenPackages) {
+        this.chosenPackages = chosenPackages;
+    }
+
+    
+
+    
 
     
     
