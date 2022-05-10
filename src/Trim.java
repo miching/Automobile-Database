@@ -27,7 +27,7 @@ public class Trim
 
     //Unidirectional One-To-Many with automobiles
     @OneToMany
-    @JoinColumn(name = "trim")
+    @JoinColumn(name = "trimID")
     private List<Automobile> automobiles;
 
     //Bidirectional One-to-Many with availablePackges
@@ -46,13 +46,12 @@ public class Trim
     )
     private Set<Feature> trimFeatures;
 
-    
 
     public Trim() 
     {
 
 
-      
+
     }
 
     public Trim(Model model, String trimName, int cost)

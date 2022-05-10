@@ -15,11 +15,11 @@ public class Feature
     @Column(length = 100, nullable = false, unique = true)
     private String name;
 
-    private Set<Package> packageFeature;
+    private Set<Package> packageFeatures;
 
-    private Set<Trim> trimFeature;
+    private Set<Trim> trimFeatures;
 
-    private Set<Model> modelFeature;
+    private Set<Model> modelFeatures;
 
     public Feature()
     {
@@ -32,9 +32,9 @@ public class Feature
     {
 
         this.name = name;
-        packageFeature = Collections.emptySet();
-        trimFeature = Collections.emptySet();
-        modelFeature = Collections.emptySet();
+        packageFeatures = Collections.emptySet();
+        trimFeatures = Collections.emptySet();
+        modelFeatures = Collections.emptySet();
 
     }
 
@@ -51,27 +51,27 @@ public class Feature
     }
 
     public Set<Package> getPackageFeature() {
-        return packageFeature;
+        return packageFeatures;
     }
 
     public void setPackageFeature(Set<Package> packageFeature) {
-        this.packageFeature = packageFeature;
+        this.packageFeatures = packageFeature;
     }
 
     public Set<Trim> getTrimFeature() {
-        return trimFeature;
+        return trimFeatures;
     }
 
     public void setTrimFeature(Set<Trim> trimFeature) {
-        this.trimFeature = trimFeature;
+        this.trimFeatures = trimFeature;
     }
 
     public Set<Model> getModelFeature() {
-        return modelFeature;
+        return modelFeatures;
     }
 
     public void setModelFeature(Set<Model> modelFeature) {
-        this.modelFeature = modelFeature;
+        this.modelFeatures = modelFeature;
     }
 
     
