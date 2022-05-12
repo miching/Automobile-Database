@@ -19,7 +19,7 @@ public class Package
     private Set<AvailablePackage> availablePackages;
 
     //Unidirectional many to many with Features
-    @ManyToMany 
+    @ManyToMany
     @JoinTable
     (
 

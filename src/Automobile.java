@@ -1,4 +1,5 @@
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.*;
@@ -79,5 +80,41 @@ public class Automobile
     }
 
     
+    public Set<Feature> getFeatures()
+    {
+        
+        //Set containing all features
+        Set<Feature> allFeatures = new HashSet<Feature>();
+
+        //Get all features from chosen packages
+        for (AvailablePackage availableFeature : chosenPackages) 
+        {
+        
+            Package temp = availableFeature.getPackage1();
+            allFeatures.addAll( temp.getPackageFeatures() );
+
+        }
+
+        //Get all features from Trim
+        for (Feature trimFeature : trim.getTrimFeatures() ) 
+        {
+        
+            allFeatures.add(trimFeature);
+
+        }
+
+        //Get all features from Model
+        for (Feature modelFeature : trim.getModel().getModelFeatures() ) 
+        {
+        
+            allFeatures.add(modelFeature);
+
+        }
+
+    
+        
+        return allFeatures;
+
+    }
 
 }
