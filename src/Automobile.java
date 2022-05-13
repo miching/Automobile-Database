@@ -117,4 +117,15 @@ public class Automobile
 
     }
 
+
+    public double stickerPrice()
+    {
+
+        double price = 0;
+
+        
+
+        return price;
+    }
+
 }
