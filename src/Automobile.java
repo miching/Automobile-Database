@@ -2,6 +2,8 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.postgresql.shaded.com.ongres.scram.common.bouncycastle.pbkdf2.Pack;
+
 import jakarta.persistence.*;
 
 @Entity (name = "automobile")
@@ -91,7 +93,14 @@ public class Automobile
         {
         
             Package temp = availableFeature.getPackage1();
-            allFeatures.addAll( temp.getPackageFeatures() );
+
+            for(Feature f1: temp.getPackageFeatures() )
+            {
+
+                allFeatures.add(f1);
+
+            }
+               
 
         }
 
