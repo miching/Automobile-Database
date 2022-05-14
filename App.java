@@ -300,6 +300,7 @@ public class App {
     private static void addAutomobiles(int pk, Trim trimid, String vin,int [] aP){
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("project3Db");
+
         EntityManager em = factory.createEntityManager();
 
         Automobile newAuto = new Automobile(pk,trimid,vin);
@@ -464,7 +465,7 @@ public class App {
 //        printFeatures();
 //        addModels();
 //        System.out.println();
-        addPakcages(1,packages[0],7);
+        addPakcages(1,packages[0],6);
         addPakcages(2,packages[1],6);
         addPakcages(2,packages[1],5);
         addPakcages(3,packages[2],8);
@@ -525,28 +526,30 @@ public class App {
         int [] phTl2022 = {1,4};
         int [] phTp2022 = {1,4,6,5};
 
-        addTrimfeatures(phTl2022,4);
-        addTrimfeatures(phTp2022,5);
+        addTrimfeatures(phTl2022,5);
+        addTrimfeatures(phTp2022,6);
 
         int [] phTl2021 = {1,4};
         int [] phTp20221 = {1,4,6,8};
 
-        addTrimfeatures(phTl2021,6);
-        addTrimfeatures(phTp20221,8);
+        addTrimfeatures(phTl2021,8);
+        addTrimfeatures(phTp20221,9);
 
 
         setAvailablepackages(1,em.find(Trim.class,1),em.find(Package.class,3),3000);
         setAvailablepackages(2,em.find(Trim.class,2),em.find(Package.class,2),2500);
         setAvailablepackages(3,em.find(Trim.class,5),em.find(Package.class,2),2500);
         setAvailablepackages(4,em.find(Trim.class,7),em.find(Package.class,3),3000);
-        setAvailablepackages(6,em.find(Trim.class,8),em.find(Package.class,1),2500);
-        setAvailablepackages(7,em.find(Trim.class,8),em.find(Package.class,3),2000);
+        setAvailablepackages(5,em.find(Trim.class,8),em.find(Package.class,1),2500);
+        setAvailablepackages(6,em.find(Trim.class,8),em.find(Package.class,3),2000);
 
 
-        int [] firstAuto = {1};
+
+        //These are chossen packages should match trim and package
+        int [] firstAuto = {2};
         int [] secondAuto = {};
         int [] thirdAuto = {};
-        int [] fourthAuto = {3};
+        int [] fourthAuto = {4};
         int [] fifthAuto = {5,6};
 
         addAutomobiles(1,em.find(Trim.class,2),"12345abcde",firstAuto);
