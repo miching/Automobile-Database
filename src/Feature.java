@@ -75,6 +75,14 @@ public class Feature
         this.modelFeatures = modelFeature;
     }
 
-    
-    
+    //Print name of feature
+    @Override
+    public String toString() 
+    {
+
+        return name;
+
+    }
+
+
 }

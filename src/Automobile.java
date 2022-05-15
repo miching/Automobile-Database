@@ -2,6 +2,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import jakarta.persistence.*;
+import jakarta.validation.OverridesAttribute.List;
 
 @Entity (name = "automobile")
 public class Automobile
@@ -145,15 +146,54 @@ public class Automobile
         return price;
     }
 
+    //Print Car Info in desired format
     @Override
     public String toString() 
     {
 
-        return (trim.getModel().getYear() + trim.getModel().getModelName() + trim.getTrimName() + "\n" +
-                this.stickerPrice() + "\n" + this.getFeatures() );
+        Object [] listFeatures = this.getFeatures().toArray();
+
+        Object temp ;
+        //Sort list of features
+        for(int i = 0 ; i < listFeatures.length ;i++)
+        {
+
+            for(int j = i + 1 ; i < listFeatures.length;i++)
+            {
+
+                if(listFeatures[i].toString().compareTo(listFeatures[j].toString()) > 0)
+                {
+
+                    temp = listFeatures[i];
+
+                    listFeatures[i] = listFeatures[j];
+
+                    listFeatures[j] = temp;
+
+                }
+            }
+        }
+
+        //Format of Car Info
+        String carInfo = ("[" + trim.getModel().getYear() + "] " + "[" + trim.getModel().getModelName() + "] " + "[" + trim.getTrimName() + "]"+ "\n[" + this.stickerPrice() + "]\n");
+
+        //Add all chosen car features to car info 
+        for(int i = 0; i < listFeatures.length; i++)
+        {
+
+            carInfo = carInfo + "["+listFeatures[i] + "]\n";
+
+        }
+
+        return (carInfo);
 
     }
 
-    
+
+
+
+
+
+
 
 }

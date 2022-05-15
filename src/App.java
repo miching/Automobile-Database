@@ -331,7 +331,7 @@ public class App {
         try{
 
             Automobile car = carVIN.getSingleResult();
-            System.out.println("Your requested automobile: " + car);
+            System.out.println("Your requested automobile: \n" + car);
 
         }
         catch(NoResultException e)
@@ -387,105 +387,132 @@ public class App {
     public static void instantiateModel()
     {
 
+        System.out.println("Called xtimes");
+
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("project3Db");
         EntityManager em = factory.createEntityManager();
-      
-        String [] packages = {"Theater Package","Amazon Theater Package", "Safety Package"};
 
-        addingFeatures();
-//        printFeatures();
-//        addModels();
-//        System.out.println();
-        addPackages(1,packages[0],7);
-        addPackages(2,packages[1],6);
-        addPackages(2,packages[1],5);
-        addPackages(3,packages[2],8);
-//        testPackageFeatures();
+        Feature firstFeature = em.find(Feature.class, 1); // parameter 1: the primary key value.
 
+        String [] features = {"leather seats","plug-in hybrid engine","power sliding doors",
+                "hands-free sliding doors","Amazon FireTV","rear-seat entertainment screens",
+                "all-wheel drive","adaptive cruise control"};
 
+        
+        if(firstFeature == null)
+        {
 
-//        System.out.println("__________________");
+            for(String f : features){
 
-        addModels(1,"Pacifica", 2022);
-        addModels(2,"Pacifica Hybrid", 2022);
-        addModels(3,"Pacifica Hybrid", 2021);
+                em.getTransaction().begin();
+    
+                Feature newFeature =  new Feature(f);
+    
+                em.persist(newFeature);
+    
+                em.getTransaction().commit();
+    
+            }
+          
+            String [] packages = {"Theater Package","Amazon Theater Package", "Safety Package"};
+    
+            //addingFeatures();
+    //        printFeatures();
+    //        addModels();
+    //        System.out.println();
+            addPackages(1,packages[0],7);
+            addPackages(2,packages[1],6);
+            addPackages(2,packages[1],5);
+            addPackages(3,packages[2],8);
+    //        testPackageFeatures();
+    
+    
+    
+    //        System.out.println("__________________");
+    
+            addModels(1,"Pacifica", 2022);
+            addModels(2,"Pacifica Hybrid", 2022);
+            addModels(3,"Pacifica Hybrid", 2021);
+    
+            int [] p2022 = {3};
+            int [] ph2022 = {3,2};
+            int [] ph2021 = {3,2};
+            addModelfeatures(p2022,1);
+    //        testModelFeatures(1);
+            addModelfeatures(ph2022,2);
+    //        testModelFeatures(2);
+            addModelfeatures(ph2021,3);
+    //        testModelFeatures(3);
+    
+    
+            Model pM2022 = em.find(Model.class,1);
+            Model phM2022 = em.find(Model.class,2);
+            Model phM2021 = em.find(Model.class,3);
+    
+            String [] tNames = {"Touring","Limited","Pinnacle"};
+    
+            addTrims(1,pM2022,tNames[0],30000);
+            addTrims(2,pM2022,tNames[1],34000);
+            addTrims(3,pM2022,tNames[2],42000);
+    
+            addTrims(4,phM2022,tNames[0],43000);
+            addTrims(5,phM2022,tNames[1],48000);
+            addTrims(6,phM2022,tNames[2],54000);
+    
+            addTrims(7,phM2021,tNames[0],41000);
+            addTrims(8,phM2021,tNames[1],46000);
+            addTrims(9,phM2021,tNames[2],52000);
+    
+    //        checkTrims(1);
+    //        checkTrims(2);
+    //        checkTrims(3);
+    
+    //        System.out.println("____________");
+    
+            int [] pTl2022 = {1,4};
+            int [] pTp2022 = {1,4,6,5,7};
+    
+            addTrimfeatures(pTl2022,2);
+            addTrimfeatures(pTp2022,3);
+    
+    //        checktF(2);
+    //        checktF(3);
+    
+            int [] phTl2022 = {1,4};
+            int [] phTp2022 = {1,4,6,5};
+    
+            addTrimfeatures(phTl2022,4);
+            addTrimfeatures(phTp2022,5);
+    
+            int [] phTl2021 = {1,4};
+            int [] phTp20221 = {1,4,6,8};
+    
+            addTrimfeatures(phTl2021,6);
+            addTrimfeatures(phTp20221,8);
+    
+    
+            setAvailablepackages(1,em.find(Trim.class,1),em.find(Package.class,3),3000);
+            setAvailablepackages(2,em.find(Trim.class,2),em.find(Package.class,2),2500);
+            setAvailablepackages(3,em.find(Trim.class,5),em.find(Package.class,2),2500);
+            setAvailablepackages(4,em.find(Trim.class,7),em.find(Package.class,3),3000);
+            setAvailablepackages(6,em.find(Trim.class,8),em.find(Package.class,1),2500);
+            setAvailablepackages(7,em.find(Trim.class,8),em.find(Package.class,3),2000);
+    
+    
+            int [] firstAuto = {1};
+            int [] secondAuto = {};
+            int [] thirdAuto = {};
+            int [] fourthAuto = {3};
+            int [] fifthAuto = {5,6};
+    
+            addAutomobiles(1,em.find(Trim.class,2),"12345abcde",firstAuto);
+            addAutomobiles(2,em.find(Trim.class,6),"67890abcde",secondAuto);
+            addAutomobiles(3,em.find(Trim.class,9),"99999aaaaa",thirdAuto);
+            addAutomobiles(4,em.find(Trim.class,7),"aaaaa88888",fourthAuto);
+            addAutomobiles(5,em.find(Trim.class,8),"bbbbb77777",fifthAuto);
 
-        int [] p2022 = {3};
-        int [] ph2022 = {3,2};
-        int [] ph2021 = {3,2};
-        addModelfeatures(p2022,1);
-//        testModelFeatures(1);
-        addModelfeatures(ph2022,2);
-//        testModelFeatures(2);
-        addModelfeatures(ph2021,3);
-//        testModelFeatures(3);
-
-
-        Model pM2022 = em.find(Model.class,1);
-        Model phM2022 = em.find(Model.class,2);
-        Model phM2021 = em.find(Model.class,3);
-
-        String [] tNames = {"Touring","Limited","Pinnacle"};
-
-        addTrims(1,pM2022,tNames[0],30000);
-        addTrims(2,pM2022,tNames[1],34000);
-        addTrims(3,pM2022,tNames[2],42000);
-
-        addTrims(4,phM2022,tNames[0],43000);
-        addTrims(5,phM2022,tNames[1],48000);
-        addTrims(6,phM2022,tNames[2],54000);
-
-        addTrims(7,phM2021,tNames[0],41000);
-        addTrims(8,phM2021,tNames[1],46000);
-        addTrims(9,phM2021,tNames[2],52000);
-
-//        checkTrims(1);
-//        checkTrims(2);
-//        checkTrims(3);
-
-//        System.out.println("____________");
-
-        int [] pTl2022 = {1,4};
-        int [] pTp2022 = {1,4,6,5,7};
-
-        addTrimfeatures(pTl2022,2);
-        addTrimfeatures(pTp2022,3);
-
-//        checktF(2);
-//        checktF(3);
-
-        int [] phTl2022 = {1,4};
-        int [] phTp2022 = {1,4,6,5};
-
-        addTrimfeatures(phTl2022,4);
-        addTrimfeatures(phTp2022,5);
-
-        int [] phTl2021 = {1,4};
-        int [] phTp20221 = {1,4,6,8};
-
-        addTrimfeatures(phTl2021,6);
-        addTrimfeatures(phTp20221,8);
-
-
-        setAvailablepackages(1,em.find(Trim.class,1),em.find(Package.class,3),3000);
-        setAvailablepackages(2,em.find(Trim.class,2),em.find(Package.class,2),2500);
-        setAvailablepackages(3,em.find(Trim.class,5),em.find(Package.class,2),2500);
-        setAvailablepackages(4,em.find(Trim.class,7),em.find(Package.class,3),3000);
-        setAvailablepackages(6,em.find(Trim.class,8),em.find(Package.class,1),2500);
-        setAvailablepackages(7,em.find(Trim.class,8),em.find(Package.class,3),2000);
-
-
-        int [] firstAuto = {1};
-        int [] secondAuto = {};
-        int [] thirdAuto = {};
-        int [] fourthAuto = {3};
-        int [] fifthAuto = {5,6};
-
-        addAutomobiles(1,em.find(Trim.class,2),"12345abcde",firstAuto);
-        addAutomobiles(2,em.find(Trim.class,6),"67890abcde",secondAuto);
-        addAutomobiles(3,em.find(Trim.class,9),"99999aaaaa",thirdAuto);
-        addAutomobiles(4,em.find(Trim.class,7),"aaaaa88888",fourthAuto);
-        addAutomobiles(5,em.find(Trim.class,8),"bbbbb77777",fifthAuto);
+        }
+        
 
     }
 
@@ -521,7 +548,7 @@ public class App {
             }
 
             //Option: Car Lookup
-            if(userInput == 2)
+            else if(userInput == 2)
             {
 
                 carLookup();
@@ -529,7 +556,7 @@ public class App {
             }
 
             //Option: Cars containing feature
-            if(userInput == 3)
+            else if(userInput == 3)
             {
 
                 //automobilewithf();
@@ -542,10 +569,12 @@ public class App {
 
             }
 
+            printMenu();
+            userInput = scan.nextInt();
+
         }
 
-        printMenu();
-        userInput = scan.nextInt();
+      
 
     }
 
