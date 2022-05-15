@@ -11,8 +11,6 @@ public class App {
                 "hands-free sliding doors","Amazon FireTV","rear-seat entertainment screens",
                 "all-wheel drive","adaptive cruise control"};
 
-        
-
         for(String f : features){
 
             em.getTransaction().begin();
@@ -360,14 +358,21 @@ public class App {
         String inputFeature = scanner.nextLine();
 
         //Parameterized Queries
-        var carVIN = em.createQuery("SELECT a FROM automobile a where a.vin = ?1", Automobile.class);
-        carVIN.setParameter(1, inputFeature);
+        var carWithFeature = em.createQuery("SELECT a FROM automobile a JOIN a.trim t JOIN t.trimFeatures tf WHERE tf.name = ?1", Automobile.class);
+        carWithFeature.setParameter(1, inputFeature);
 
         //Check if feature exists
         try{
 
-            List<Automobile> carsWithFeature = carVIN.getResultList();
-            System.out.println("Automobiles with feature: \n");
+            List<Automobile> carsWithFeature = carWithFeature.getResultList();
+            System.out.println("Automobiles with feature: " + inputFeature + "\n");
+            for (Automobile car: carsWithFeature)
+            {
+
+                System.out.println(car.getVin());
+
+            }
+            
 
         }
         catch(NoResultException e)
