@@ -361,7 +361,7 @@ public class App {
         var carWithFeature = em.createQuery("SELECT a FROM automobile a JOIN a.trim t JOIN t.trimFeatures tf WHERE tf.name = ?1", Automobile.class);
         carWithFeature.setParameter(1, inputFeature);
 
-        //Check if feature exists
+        //Check if cars have this feature
         try{
 
             List<Automobile> carsWithFeature = carWithFeature.getResultList();
@@ -378,7 +378,7 @@ public class App {
         catch(NoResultException e)
         {
 
-            System.out.println("Feature: " + inputFeature + " could be found.");
+            System.out.println("Feature: " + inputFeature + " could be found in a car.");
 
         }
 
@@ -456,17 +456,10 @@ public class App {
           
             String [] packages = {"Theater Package","Amazon Theater Package", "Safety Package"};
     
-            //addingFeatures();
-    //        printFeatures();
-    //        addModels();
-    //        System.out.println();
-            addPackages(1,packages[0],7);
+            addPackages(1,packages[0],6);
             addPackages(2,packages[1],6);
             addPackages(2,packages[1],5);
             addPackages(3,packages[2],8);
-    //        testPackageFeatures();
-    
-    
     
     //        System.out.println("__________________");
     
@@ -521,28 +514,29 @@ public class App {
             int [] phTl2022 = {1,4};
             int [] phTp2022 = {1,4,6,5};
     
-            addTrimfeatures(phTl2022,4);
-            addTrimfeatures(phTp2022,5);
+            addTrimfeatures(phTl2022,5);
+            addTrimfeatures(phTp2022,6);
     
             int [] phTl2021 = {1,4};
             int [] phTp20221 = {1,4,6,8};
     
-            addTrimfeatures(phTl2021,6);
-            addTrimfeatures(phTp20221,8);
+            addTrimfeatures(phTl2021,8);
+            addTrimfeatures(phTp20221,9);
     
     
             setAvailablepackages(1,em.find(Trim.class,1),em.find(Package.class,3),3000);
             setAvailablepackages(2,em.find(Trim.class,2),em.find(Package.class,2),2500);
             setAvailablepackages(3,em.find(Trim.class,5),em.find(Package.class,2),2500);
             setAvailablepackages(4,em.find(Trim.class,7),em.find(Package.class,3),3000);
-            setAvailablepackages(6,em.find(Trim.class,8),em.find(Package.class,1),2500);
-            setAvailablepackages(7,em.find(Trim.class,8),em.find(Package.class,3),2000);
+            setAvailablepackages(5,em.find(Trim.class,8),em.find(Package.class,1),2500);
+            setAvailablepackages(6,em.find(Trim.class,8),em.find(Package.class,3),2000);
     
     
-            int [] firstAuto = {1};
+            //These are chossen packages should match trim and package
+            int [] firstAuto = {2};
             int [] secondAuto = {};
             int [] thirdAuto = {};
-            int [] fourthAuto = {3};
+            int [] fourthAuto = {4};
             int [] fifthAuto = {5,6};
     
             addAutomobiles(1,em.find(Trim.class,2),"12345abcde",firstAuto);
