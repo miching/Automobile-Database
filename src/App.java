@@ -387,18 +387,17 @@ public class App {
     public static void instantiateModel()
     {
 
-        System.out.println("Called xtimes");
-
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("project3Db");
         EntityManager em = factory.createEntityManager();
 
+        //Check if values already in DB
         Feature firstFeature = em.find(Feature.class, 1); // parameter 1: the primary key value.
 
         String [] features = {"leather seats","plug-in hybrid engine","power sliding doors",
                 "hands-free sliding doors","Amazon FireTV","rear-seat entertainment screens",
                 "all-wheel drive","adaptive cruise control"};
 
-        
+        //Only create once, if it already exists don't instantiate again
         if(firstFeature == null)
         {
 
@@ -534,47 +533,63 @@ public class App {
         printMenu();
         Scanner scan = new Scanner(System.in);
         
-        int userInput = scan.nextInt();
+        try{
 
-        while(userInput != 4)
+            int userInput = scan.nextInt();
+            while(userInput != 4)
+            {
+
+                //Option: Create Model
+                if(userInput == 1)
+                {
+
+                    instantiateModel();
+
+                }
+
+                //Option: Car Lookup
+                else if(userInput == 2)
+                {
+
+                    carLookup();
+
+                }
+
+                //Option: Cars containing feature
+                else if(userInput == 3)
+                {
+
+                    //automobilewithf();
+
+                }
+                else
+                {
+
+                    System.out.println("Invalid user input");
+
+                }
+
+                printMenu();
+                try{
+
+                    userInput = scan.nextInt();
+
+                }catch(InputMismatchException e)
+                {
+        
+                    System.out.println("Input mismatch. Exit.");
+                    userInput = 4;
+        
+                }
+
+            }
+
+        }catch(InputMismatchException e)
         {
 
-            //Option: Create Model
-            if(userInput == 1)
-            {
-
-                instantiateModel();
-
-            }
-
-            //Option: Car Lookup
-            else if(userInput == 2)
-            {
-
-                carLookup();
-
-            }
-
-            //Option: Cars containing feature
-            else if(userInput == 3)
-            {
-
-                //automobilewithf();
-
-            }
-            else
-            {
-
-                System.out.println("Invalid user input");
-
-            }
-
-            printMenu();
-            userInput = scan.nextInt();
+            System.out.println("Input mismatch. Exit.");
 
         }
-
-      
 
     }
 
