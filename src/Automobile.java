@@ -2,7 +2,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import jakarta.persistence.*;
-import jakarta.validation.OverridesAttribute.List;
 
 @Entity (name = "automobile")
 public class Automobile

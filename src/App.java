@@ -3,7 +3,6 @@ import java.util.*;
 
 public class App {
 
-    
     private static void addingFeatures(){
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("project3Db");
         EntityManager em = factory.createEntityManager();
@@ -313,6 +312,7 @@ public class App {
 
     }
 
+    //Option #2 - Look up car information with a VIN
     private static void carLookup(){
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("project3Db");
@@ -320,6 +320,7 @@ public class App {
 
         Scanner scanner = new Scanner(System.in);
 
+         //Get User-input VIN
         System.out.print("Enter VIN = ");
         String inputVIN = scanner.nextLine();
 
@@ -328,6 +329,7 @@ public class App {
         var carVIN = em.createQuery("SELECT a FROM automobile a where a.vin = ?1", Automobile.class);
         carVIN.setParameter(1, inputVIN);
 
+        //Check if car VIN exists
         try{
 
             Automobile car = carVIN.getSingleResult();
@@ -341,6 +343,40 @@ public class App {
 
         }
         
+
+    }
+
+    //Option 3 - Find all automobiles with a certain feature
+    private static void automobileWithFeature()
+    {
+
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("project3Db");
+        EntityManager em = factory.createEntityManager();
+
+        Scanner scanner = new Scanner(System.in);
+
+        //Get User-input Feature
+        System.out.print("Enter Feature = ");
+        String inputFeature = scanner.nextLine();
+
+        //Parameterized Queries
+        var carVIN = em.createQuery("SELECT a FROM automobile a where a.vin = ?1", Automobile.class);
+        carVIN.setParameter(1, inputFeature);
+
+        //Check if feature exists
+        try{
+
+            List<Automobile> carsWithFeature = carVIN.getResultList();
+            System.out.println("Automobiles with feature: \n");
+
+        }
+        catch(NoResultException e)
+        {
+
+            System.out.println("Feature: " + inputFeature + " could be found.");
+
+        }
+
 
     }
 
@@ -397,7 +433,7 @@ public class App {
                 "hands-free sliding doors","Amazon FireTV","rear-seat entertainment screens",
                 "all-wheel drive","adaptive cruise control"};
 
-        //Only create once, if it already exists don't instantiate again
+        //Only create model once, if it already exists don't instantiate again
         if(firstFeature == null)
         {
 
@@ -559,7 +595,7 @@ public class App {
                 else if(userInput == 3)
                 {
 
-                    //automobilewithf();
+                    automobileWithFeature();
 
                 }
                 else
