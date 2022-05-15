@@ -132,6 +132,17 @@ public class Automobile
 
         double price = 0;
 
+        //Add price of trim
+        price = trim.getCost();
+
+
+        //Get price from chosen packages
+        for (AvailablePackage carPackages : chosenPackages) 
+        {
+        
+            price += carPackages.getCost(); 
+
+        }
         
 
         return price;

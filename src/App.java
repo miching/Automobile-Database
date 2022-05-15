@@ -1,12 +1,5 @@
 import jakarta.persistence.*;
-import org.postgresql.shaded.com.ongres.scram.common.bouncycastle.pbkdf2.Pack;
-
-//import java.lang.Package;
 import java.util.*;
-
-import javax.swing.text.html.parser.Entity;
-import java.util.ArrayList;
-
 
 public class App {
 
@@ -52,7 +45,7 @@ public class App {
         }
 
     }
-    private static void addPakcages(int pk, String packageN,int featureid){
+    private static void addPackages(int pk, String packageN,int featureid){
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("project3Db");
         EntityManager em = factory.createEntityManager();
@@ -115,10 +108,6 @@ public class App {
         System.out.println(" ");
 
 
-
-
-
-
     }
 
     private static void addModels(int pk, String name,int year){
@@ -133,8 +122,6 @@ public class App {
         em.persist(newModel);
 
         em.getTransaction().commit();
-
-
 
 
     }
@@ -250,8 +237,6 @@ public class App {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("project3Db");
         EntityManager em = factory.createEntityManager();
 
-
-
         Trim eT = em.find(Trim.class,pk);
 
         System.out.println(eT.getTrimName());
@@ -295,8 +280,6 @@ public class App {
 
         Automobile newAuto = new Automobile(pk,trimid,vin);
 
-
-
         Set<AvailablePackage> newApset = new HashSet<>();
 
         if(aP.length != 0){
@@ -338,15 +321,31 @@ public class App {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter VIN = ");
-
-        String input = scanner.nextLine();
-
-        String jpaQuery = "SELECT a FROM automobile a WHERE a.vin = '" + input +"'";
-
-        Automobile auto = em.createQuery(jpaQuery,Automobile.class).getSingleResult();
+        String inputVIN = scanner.nextLine();
 
 
-        Set<Feature> sPset = auto.getFeatures();
+        //Parameterized Queries
+        var carVIN = em.createQuery("SELECT a FROM automobile a where a.vin = ?1", Automobile.class);
+        carVIN.setParameter(1, inputVIN);
+
+        try{
+
+            Automobile car = carVIN.getSingleResult();
+            System.out.println("Your requested automobile: " + car);
+
+        }
+        catch(NoResultException e)
+        {
+
+            System.out.println("No automobile with the VIN: " + inputVIN + " could be found.");
+
+        }
+/*
+
+        //Automobile auto = em.createQuery(jpaQuery,Automobile.class).getSingleResult();
+
+
+        //Set<Feature> sPset = auto.getFeatures();
 
 //        for(Feature f : sPset){
 //
@@ -395,7 +394,7 @@ public class App {
 //
 //        System.out.println(autoModel.getYear());
 
-
+*/
 
     }
 
@@ -455,10 +454,10 @@ public class App {
 //        printFeatures();
 //        addModels();
 //        System.out.println();
-        addPakcages(1,packages[0],7);
-        addPakcages(2,packages[1],6);
-        addPakcages(2,packages[1],5);
-        addPakcages(3,packages[2],8);
+        addPackages(1,packages[0],7);
+        addPackages(2,packages[1],6);
+        addPackages(2,packages[1],5);
+        addPackages(3,packages[2],8);
 //        testPackageFeatures();
 
 
