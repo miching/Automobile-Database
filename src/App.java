@@ -383,17 +383,13 @@ public class App {
 //
 //    }
 
-
-
-
-    public static void main(String[] args) throws Exception {
+    //Option #1 - Instantiate Model
+    public static void instantiateModel()
+    {
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("project3Db");
         EntityManager em = factory.createEntityManager();
-
-//        basicDemos();
-        //associationDemos();
-//        equalityDemos();
+      
         String [] packages = {"Theater Package","Amazon Theater Package", "Safety Package"};
 
         addingFeatures();
@@ -491,8 +487,65 @@ public class App {
         addAutomobiles(4,em.find(Trim.class,7),"aaaaa88888",fourthAuto);
         addAutomobiles(5,em.find(Trim.class,8),"bbbbb77777",fifthAuto);
 
-        carLookup();
-//        automobilWithf();
+    }
+
+    public static void printMenu()
+    {
+
+        System.out.println("1) Instantiate model.");
+        System.out.println("2) Automobile lookup.");
+        System.out.println("3) Feature search.");
+        System.out.println("4) Exit.");
+        System.out.println("Enter int: ");
+
+    }
+
+
+    public static void main(String[] args) throws Exception
+    {
+
+        printMenu();
+        Scanner scan = new Scanner(System.in);
+        
+        int userInput = scan.nextInt();
+
+        while(userInput != 4)
+        {
+
+            //Option: Create Model
+            if(userInput == 1)
+            {
+
+                instantiateModel();
+
+            }
+
+            //Option: Car Lookup
+            if(userInput == 2)
+            {
+
+                carLookup();
+
+            }
+
+            //Option: Cars containing feature
+            if(userInput == 3)
+            {
+
+                //automobilewithf();
+
+            }
+            else
+            {
+
+                System.out.println("Invalid user input");
+
+            }
+
+        }
+
+        printMenu();
+        userInput = scan.nextInt();
 
     }
 
