@@ -340,61 +340,7 @@ public class App {
             System.out.println("No automobile with the VIN: " + inputVIN + " could be found.");
 
         }
-/*
-
-        //Automobile auto = em.createQuery(jpaQuery,Automobile.class).getSingleResult();
-
-
-        //Set<Feature> sPset = auto.getFeatures();
-
-//        for(Feature f : sPset){
-//
-//            System.out.println(f.getName());
-//
-//        }
-
-        Trim autoTrim = em.find(Trim.class,auto.getTrim().getTrimID());
-
-        System.out.println("[" +autoTrim.getModel().getYear() + "] " +"[" +autoTrim.getModel().getModelName() + "] " +"[" +autoTrim.getTrimName() + "] ");
-
-        System.out.println("[" +autoTrim.getCost() + "]");
-
-
-
-
-        Object [] stringTFeatures = sPset.toArray();
-
-        Object temp ;
-        for(int i = 0 ; i < stringTFeatures.length ;i++){
-
-            for(int j = i + 1 ; i < stringTFeatures.length;i++){
-
-                if(stringTFeatures[i].toString().compareTo(stringTFeatures[j].toString()) > 0){
-
-                    temp = stringTFeatures[i];
-
-                    stringTFeatures[i] = stringTFeatures[j];
-
-                    stringTFeatures[j] = temp;
-
-                }
-            }
-        }
-
-        Feature [] fTrim = Arrays.stream(stringTFeatures).toArray(Feature[]::new);
-
-
-        for(Feature f : fTrim){
-
-            System.out.println("[" + f.getName() + "]");
-        }
-//        for
-//
-//        Model autoModel = autoTrim.getModel();
-//
-//        System.out.println(autoModel.getYear());
-
-*/
+        
 
     }
 

@@ -1,9 +1,6 @@
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-
-import org.postgresql.shaded.com.ongres.scram.common.bouncycastle.pbkdf2.Pack;
-
 import jakarta.persistence.*;
 
 @Entity (name = "automobile")
@@ -147,5 +144,16 @@ public class Automobile
 
         return price;
     }
+
+    @Override
+    public String toString() 
+    {
+
+        return (trim.getModel().getYear() + trim.getModel().getModelName() + trim.getTrimName() + "\n" +
+                this.stickerPrice() + "\n" + this.getFeatures() );
+
+    }
+
+    
 
 }
