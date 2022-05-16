@@ -386,6 +386,14 @@ public class App {
             allCarsWithFeature.addAll(carsWithFeature2);
             allCarsWithFeature.addAll(carsWithFeature3);
 
+            //Throw exception if no cars have this feature
+            if (allCarsWithFeature.isEmpty())
+            {
+
+                throw new Exception();
+
+            }
+
             System.out.println("Automobiles with feature: " + inputFeature + "\n");
             for (Automobile car: allCarsWithFeature)
             {
@@ -396,54 +404,16 @@ public class App {
             
 
         }
-        catch(NoResultException e)
+        catch(Exception e)
         {
 
-            System.out.println("Feature: " + inputFeature + " could be found in a car.");
+            System.out.println(("Feature: " + inputFeature + " could be found in a car."));
 
         }
 
 
     }
 
-//    private static void automobilWithf(){
-//
-//        EntityManagerFactory factory = Persistence.createEntityManagerFactory("project3Db");
-//        EntityManager em = factory.createEntityManager();
-//
-//        Scanner scanner = new Scanner(System.in);
-//
-//        System.out.print("Enter Feature Name = ");
-//
-//
-//        String input = scanner.nextLine();
-//
-////        String jpaQueary = "SELECT f FROM feature f WHERE f.name = '" + input +"'";
-//
-//        String q = "SELECT t FROM trim t JOIN"
-//
-//        List<Automobile> listA = em.createQuery(query, Automobile.class).getResultList();
-//
-//        System.out.println(listA);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//    }
 
     //Option #1 - Instantiate Model
     public static void instantiateModel()
