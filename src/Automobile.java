@@ -40,10 +40,9 @@ public class Automobile
 
     }
 
-    public Automobile(int autoID, Trim trim, String vin)
+    public Automobile(Trim trim, String vin)
     {
         
-        this.autoID = autoID;
         this.trim = trim;
         this.vin = vin;
         chosenPackages = Collections.emptySet();
