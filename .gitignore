@@ -1,9 +1,6 @@
 
 *.class
 *.class
-bin/App.class
-bin/App.class
-bin/App.class
 *.jar
 .vscode/settings.json
 *.xml
@@ -12,3 +9,5 @@ lib/.DS_Store
 bin/.DS_Store
 .vscode/settings.json
 .DS_Store
+*.class
+bin/
