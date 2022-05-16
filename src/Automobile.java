@@ -153,12 +153,14 @@ public class Automobile
         Object [] listFeatures = this.getFeatures().toArray();
 
         Object temp ;
-        //Sort list of features
-        for(int i = 0 ; i < listFeatures.length ;i++)
+        //Bubble sort list of features
+        for(int i = 0 ; i < listFeatures.length-1 ;i++)
         {
 
-            for(int j = i + 1 ; i < listFeatures.length;i++)
+            for(int j = i + 1 ; j < listFeatures.length; j++)
             {
+
+               // System.out.println("TEST: " + listFeatures[i].toString());
 
                 if(listFeatures[i].toString().compareTo(listFeatures[j].toString()) > 0)
                 {
