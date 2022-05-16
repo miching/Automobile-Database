@@ -275,7 +275,7 @@ public class App {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("project3Db");
         EntityManager em = factory.createEntityManager();
 
-        Automobile newAuto = new Automobile(pk,trimid,vin);
+        Automobile newAuto = new Automobile(trimid,vin);
 
         Set<AvailablePackage> newApset = new HashSet<>();
 
@@ -357,16 +357,37 @@ public class App {
         System.out.print("Enter Feature = ");
         String inputFeature = scanner.nextLine();
 
+        //
+
         //Parameterized Queries
         var carWithFeature = em.createQuery("SELECT a FROM automobile a JOIN a.trim t JOIN t.trimFeatures tf WHERE tf.name = ?1", Automobile.class);
         carWithFeature.setParameter(1, inputFeature);
+
+        //Parameterized Queries
+        var carWithFeature2 = em.createQuery("SELECT a FROM automobile a JOIN a.trim t JOIN t.model m JOIN m.modelFeatures mF WHERE mF.name = ?1", Automobile.class);
+        carWithFeature2.setParameter(1, inputFeature);
+
+        //Parameterized Queries
+        var carWithFeature3 = em.createQuery("SELECT a FROM automobile a JOIN a.chosenPackages cP JOIN cP.package1 p1 JOIN p1.packageFeatures pF WHERE pF.name = ?1", Automobile.class);
+        carWithFeature3.setParameter(1, inputFeature);
 
         //Check if cars have this feature
         try{
 
             List<Automobile> carsWithFeature = carWithFeature.getResultList();
+
+            List<Automobile> carsWithFeature2 = carWithFeature2.getResultList();
+
+            List<Automobile> carsWithFeature3 = carWithFeature3.getResultList();
+
+            Set <Automobile> allCarsWithFeature = new HashSet<Automobile>();
+
+            allCarsWithFeature.addAll(carsWithFeature);
+            allCarsWithFeature.addAll(carsWithFeature2);
+            allCarsWithFeature.addAll(carsWithFeature3);
+
             System.out.println("Automobiles with feature: " + inputFeature + "\n");
-            for (Automobile car: carsWithFeature)
+            for (Automobile car: allCarsWithFeature)
             {
 
                 System.out.println(car.getVin());
