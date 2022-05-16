@@ -15,7 +15,6 @@ public class Feature
     @Column(length = 100, nullable = false, unique = true)
     private String name;
 
-    //Why is it creating additional classes
     private Set<Package> packageFeatures;
 
     private Set<Trim> trimFeatures;
